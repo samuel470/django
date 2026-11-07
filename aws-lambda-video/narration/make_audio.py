@@ -3,8 +3,16 @@ import numpy as np
 os.makedirs('audio', exist_ok=True)
 scenes = json.load(open('script.json'))
 SR = 44100
+_K=None
 def synth(text, path):
-    subprocess.run(['espeak-ng','-v','mb-br1','-s','140','-p','45','-g','4',text,'-w',path],check=True,stderr=subprocess.DEVNULL)
+    global _K
+    import soundfile as sf
+    if _K is None:
+        from kokoro_onnx import Kokoro
+        _K=Kokoro('kokoro/kokoro-v1.0.onnx','kokoro/voices-v1.0.bin')
+    voice=os.environ.get('VOICE','pm_alex')
+    samples,sr=_K.create(text,voice=voice,speed=float(os.environ.get('SPEED','1.0')),lang='pt-br')
+    sf.write(path,samples,sr)
 def load(path):
     out = subprocess.run(['ffmpeg','-v','error','-i',path,'-f','f32le','-ac','1','-ar',str(SR),'-'],capture_output=True,check=True).stdout
     return np.frombuffer(out,dtype=np.float32).copy()

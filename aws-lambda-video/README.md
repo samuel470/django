@@ -1,21 +1,31 @@
-# AWS Lambda em 3D (narração pt-BR)
+# AWS Lambda em 3D — Remotion + narração pt-BR
 
-Vídeo gerado por código: cenas 3D em three.js, capturadas quadro a quadro com Chromium (Playwright) e montadas com ffmpeg.
+Vídeo explicativo de ~1min40 sobre o AWS Lambda. As cenas 3D (three.js) e as camadas de texto (legendas, títulos, HUD) são uma composição do [Remotion](https://www.remotion.dev); a narração é gerada localmente com o modelo neural Kokoro.
 
-## Arquivos
-- script.json  – roteiro (texto exibido e texto falado, por frase)
-- make_audio.py – gera narração (espeak-ng + voz MBROLA mb-br1), música ambiente e timeline.json
-- index.html – cenas 3D (todas as animações são função do tempo t)
-- render.js – captura os quadros
-- timeline.json – tempos de cada frase (gerado)
+Resultado pronto: `aws-lambda-3d-pt.mp4`.
 
-## Como refazer
-1. sudo apt-get install -y espeak-ng mbrola mbrola-br1 ffmpeg
-2. npm i three@0.160.0 playwright   (e npx playwright install chromium)
-3. python3 make_audio.py
-4. ffmpeg -y -i audio/voice.wav -i audio/music.wav -filter_complex "[0:a]highpass=f=90,acompressor=threshold=-18dB:ratio=3[v];[1:a]volume=0.5[m];[v][m]amix=inputs=2:normalize=0:duration=longest,loudnorm=I=-16:TP=-1.5,aformat=sample_rates=44100:channel_layouts=stereo" audio/mix.wav
-5. python3 -m http.server 8765 &
-6. node render.js 8765 frames 30 0 3643
-7. ffmpeg -framerate 30 -i frames/f_%05d.jpg -i audio/mix.wav -c:v libx264 -crf 20 -pix_fmt yuv420p -c:a aac -shortest aws-lambda-3d-pt.mp4
+## Rodar
+```bash
+cd aws-lambda-video
+npm install
+npm run studio     # abre o Remotion Studio (preview em tempo real)
+npm run render     # gera out/aws-lambda-3d-pt.mp4
+```
+No Mac/Windows o Remotion baixa o Chrome sozinho. Em ambientes sem rede/GPU use, por exemplo:
+`npx remotion render src/index.jsx LambdaVideo out/video.mp4 --gl=swangle --browser-executable=/caminho/do/chrome`
 
-Dica: para voz mais natural, gere a narração em um serviço de TTS e substitua audio/voice.wav.
+## Estrutura
+- `src/LambdaVideo.jsx` — composição (canvas 3D + overlays + áudio)
+- `src/world.js` — todas as cenas 3D; cada cena é uma função do tempo `t` (fácil de editar)
+- `src/timeline.json` — tempos de cada frase (gerado pela narração)
+- `public/narration-mix.mp3` — narração + música ambiente
+- `narration/` — roteiro (`script.json`) e scripts de áudio
+
+## Mudar roteiro ou voz
+Edite `narration/script.json` (campo `show` = legenda, `say` = texto falado, com grafia fonética para siglas) e rode:
+```bash
+VOICE=pf_dora ./narration/build_audio.sh   # vozes pt-BR: pm_alex (padrão), pm_santa, pf_dora
+```
+Isso atualiza `src/timeline.json` e o MP3; as cenas se ajustam ao novo ritmo. Para uma voz ainda mais natural, gere a narração em um serviço de TTS (ex.: ElevenLabs) e substitua `public/narration-mix.mp3` e os tempos em `src/timeline.json`.
+
+Os números citados no vídeo (15 min, 128 MB a 10 GB, cobrança por requisição e ms) foram escritos de memória: confira na documentação da AWS antes de publicar.

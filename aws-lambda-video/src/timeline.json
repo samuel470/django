@@ -1,189 +1,189 @@
 {
- "total": 121.403,
+ "total": 101.274,
  "scenes": [
   {
    "id": "intro",
    "start": 0.8,
-   "end": 11.319,
+   "end": 9.997,
    "sentences": [
     {
      "show": "AWS Lambda.",
      "start": 0.8,
-     "end": 2.428
+     "end": 2.185
     },
     {
      "show": "Imagine executar o seu código na nuvem, sem criar nem manter nenhum servidor.",
-     "start": 2.728,
-     "end": 8.16
+     "start": 2.485,
+     "end": 7.261
     },
     {
      "show": "É exatamente isso que o Lambda faz.",
-     "start": 8.46,
-     "end": 11.019
+     "start": 7.561,
+     "end": 9.697
     }
    ]
   },
   {
    "id": "what",
-   "start": 11.969,
-   "end": 30.776,
+   "start": 10.647,
+   "end": 26.247,
    "sentences": [
     {
      "show": "O Lambda é o serviço de computação serverless da AWS.",
-     "start": 11.969,
-     "end": 16.588
+     "start": 10.647,
+     "end": 14.203
     },
     {
      "show": "Em vez de manter servidores ligados o tempo todo...",
-     "start": 16.888,
-     "end": 20.186
+     "start": 14.503,
+     "end": 17.505
     },
     {
      "show": "...você envia só uma função: um pedaço de código que faz uma tarefa.",
-     "start": 20.486,
-     "end": 25.308
+     "start": 17.805,
+     "end": 21.892
     },
     {
      "show": "Infraestrutura, sistema e escala ficam por conta da AWS.",
-     "start": 25.608,
-     "end": 30.476
+     "start": 22.192,
+     "end": 25.947
     }
    ]
   },
   {
    "id": "events",
-   "start": 31.426,
-   "end": 47.637,
+   "start": 26.897,
+   "end": 40.421,
    "sentences": [
     {
      "show": "Tudo começa com um evento.",
-     "start": 31.426,
-     "end": 32.982
+     "start": 26.897,
+     "end": 28.565
     },
     {
      "show": "Um upload no S3, uma requisição no API Gateway, uma mensagem no SQS...",
-     "start": 33.282,
-     "end": 39.63
+     "start": 28.865,
+     "end": 33.896
     },
     {
      "show": "...uma mudança no DynamoDB ou um agendamento.",
-     "start": 39.93,
-     "end": 43.117
+     "start": 34.196,
+     "end": 36.952
     },
     {
      "show": "Quando o evento acontece, o Lambda chama a sua função.",
-     "start": 43.417,
-     "end": 47.337
+     "start": 37.252,
+     "end": 40.121
     }
    ]
   },
   {
    "id": "run",
-   "start": 48.287,
-   "end": 68.545,
+   "start": 41.071,
+   "end": 56.887,
    "sentences": [
     {
      "show": "O Lambda cria um ambiente isolado, carrega o seu código e executa.",
-     "start": 48.287,
-     "end": 53.007
+     "start": 41.071,
+     "end": 45.056
     },
     {
      "show": "Na primeira chamada há um pequeno atraso: o cold start.",
-     "start": 53.307,
-     "end": 57.543
+     "start": 45.356,
+     "end": 48.454
     },
     {
      "show": "Chegaram mil eventos juntos? Ele cria várias cópias em paralelo.",
-     "start": 57.843,
-     "end": 62.608
+     "start": 48.754,
+     "end": 52.458
     },
     {
      "show": "A escala é automática. E quando acaba o trabalho, tudo é desligado.",
-     "start": 62.908,
-     "end": 68.245
+     "start": 52.758,
+     "end": 56.587
     }
    ]
   },
   {
    "id": "cost",
-   "start": 69.195,
-   "end": 82.305,
+   "start": 57.537,
+   "end": 68.217,
    "sentences": [
     {
      "show": "E o melhor: você paga somente pelo que usar.",
-     "start": 69.195,
-     "end": 72.58
+     "start": 57.537,
+     "end": 60.07
     },
     {
      "show": "A cobrança considera as requisições e o tempo de execução, em milissegundos.",
-     "start": 72.88,
-     "end": 78.333
+     "start": 60.37,
+     "end": 64.934
     },
     {
      "show": "Se ninguém chamar a função, você não paga nada.",
-     "start": 78.633,
-     "end": 82.005
+     "start": 65.234,
+     "end": 67.917
     }
    ]
   },
   {
    "id": "specs",
-   "start": 82.955,
-   "end": 99.426,
+   "start": 68.867,
+   "end": 82.175,
    "sentences": [
     {
      "show": "Você escolhe a linguagem: Python, Node.js, Java, Go, .NET, Ruby ou contêiner.",
-     "start": 82.955,
-     "end": 90.449
+     "start": 68.867,
+     "end": 73.624
     },
     {
      "show": "Cada execução pode durar até 15 minutos.",
-     "start": 90.749,
-     "end": 93.777
+     "start": 73.924,
+     "end": 76.884
     },
     {
      "show": "E usar de 128 megabytes até 10 gigabytes de memória.",
-     "start": 94.077,
-     "end": 99.126
+     "start": 77.184,
+     "end": 81.875
     }
    ]
   },
   {
    "id": "cases",
-   "start": 100.076,
-   "end": 110.412,
+   "start": 82.825,
+   "end": 91.498,
    "sentences": [
     {
      "show": "É ótimo para APIs, processamento de imagens, automações e pipelines de dados.",
-     "start": 100.076,
-     "end": 106.335
+     "start": 82.825,
+     "end": 87.935
     },
     {
      "show": "Mas processos muito longos pedem outras opções.",
-     "start": 106.635,
-     "end": 110.112
+     "start": 88.235,
+     "end": 91.198
     }
    ]
   },
   {
    "id": "outro",
-   "start": 111.062,
-   "end": 120.103,
+   "start": 92.148,
+   "end": 99.974,
    "sentences": [
     {
      "show": "Resumindo: menos infraestrutura, mais código.",
-     "start": 111.062,
-     "end": 114.464
+     "start": 92.148,
+     "end": 94.851
     },
     {
      "show": "Escala automática e pagamento por uso.",
-     "start": 114.764,
-     "end": 117.308
+     "start": 95.151,
+     "end": 97.601
     },
     {
      "show": "Esse é o AWS Lambda.",
-     "start": 117.608,
-     "end": 119.803
+     "start": 97.901,
+     "end": 99.674
     }
    ]
   }

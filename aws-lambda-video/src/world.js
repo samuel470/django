@@ -1,29 +1,9 @@
-<!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><title>AWS Lambda 3D</title>
-<style>
-html,body{margin:0;background:#05060d;overflow:hidden}
-#stage{position:relative;width:1280px;height:720px;overflow:hidden;font-family:"Liberation Sans","DejaVu Sans",Arial,sans-serif;color:#fff}
-canvas{display:block}
-#sub{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);max-width:1060px;text-align:center;font-size:30px;font-weight:700;line-height:1.25;padding:10px 24px;border-radius:14px;background:rgba(5,6,13,.66);text-shadow:0 2px 6px #000;opacity:0;box-sizing:border-box}
-#chip{position:absolute;left:34px;top:28px;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#ff9900;font-weight:700;opacity:0}
-#title{position:absolute;left:0;right:0;top:56px;text-align:center;opacity:0}
-#title .big{font-size:92px;font-weight:800;letter-spacing:.01em;text-shadow:0 0 40px rgba(255,153,0,.55),0 4px 10px #000}
-#title .small{font-size:30px;color:#ffb84d;margin-top:2px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;opacity:0}
-#hud{position:absolute;right:34px;top:26px;text-align:right;font-size:24px;font-weight:700;line-height:1.5;padding:8px 18px;border-radius:12px;background:rgba(10,14,34,.7);border:1px solid rgba(120,150,255,.35);opacity:0}
-#hud b{color:#ffb84d}
-#fade{position:absolute;inset:0;background:#05060d;opacity:1;pointer-events:none}
-#bar{position:absolute;left:0;bottom:0;height:4px;background:#ff9900;width:0}
-</style></head>
-<body><div id="stage">
-<div id="chip"></div><div id="title"><div class="big"></div><div class="small"></div></div>
-<div id="hud"></div><div id="sub"></div><div id="fade"></div><div id="bar"></div>
-</div>
-<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
-<script type="module">
 import * as THREE from 'three';
+
+export function createWorld(canvas,TL){
+
 const W=1280,H=720;
-const TL=await (await fetch('timeline.json')).json();
-const FONT='"Liberation Sans","DejaVu Sans",Arial,sans-serif';
+const FONT='"Liberation Sans","Helvetica Neue",Helvetica,Arial,"DejaVu Sans",sans-serif';
 
 /* ---------- helpers ---------- */
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
@@ -35,10 +15,9 @@ const eb=x=>{x=clamp(x);const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*
 const rng=seed=>()=>((seed=(seed*1664525+1013904223)>>>0)/4294967296);
 const col=c=>new THREE.Color(c);
 
-const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});
 renderer.setSize(W,H);renderer.setPixelRatio(1);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
-document.getElementById('stage').insertBefore(renderer.domElement,document.getElementById('chip'));
 const scene=new THREE.Scene();scene.background=col(0x05060d);scene.fog=new THREE.Fog(0x05060d,16,46);
 const camera=new THREE.PerspectiveCamera(45,W/H,.1,100);
 const cam=(px,py,pz,lx=0,ly=0,lz=0)=>{camera.position.set(px,py,pz);camera.lookAt(lx,ly,lz)};
@@ -463,34 +442,28 @@ SC.outro=T=>{
 /* ---------- build ---------- */
 const names={intro:'AWS Lambda',what:'01 · O que é',events:'02 · Eventos',run:'03 · Execução e escala',cost:'04 · Custo',specs:'05 · Linguagens e limites',cases:'06 · Casos de uso',outro:'07 · Resumo'};
 const scenes=TL.scenes.map(s=>{const o=SC[s.id](s);o.group.visible=false;scene.add(o.group);return{...o,T:s}});
-const $=id=>document.getElementById(id);
-const el={sub:$('sub'),chip:$('chip'),title:$('title'),hud:$('hud'),fade:$('fade'),bar:$('bar')};
 
-window.renderAt=t=>{
+function renderAt(t){
   HUD=null;TITLE=null;
-  const alphas=scenes.map(s=>sm(seg(t,s.T.start-.5,s.T.start-.1))*sm(seg(s.T.end+.5,t,s.T.end+.1)*0+((s.T.end+.55-t)/.4)));
+  const alphas=scenes.map(s=>sm(seg(t,s.T.start-.5,s.T.start-.1))*sm((s.T.end+.55-t)/.4));
   let best=0;alphas.forEach((a,i)=>{if(a>alphas[best])best=i});
   scenes.forEach((s,i)=>s.group.visible=i===best&&alphas[i]>0);
   const S=scenes[best];
   if(alphas[best]>0)S.update(t);
-  el.fade.style.opacity=String(1-alphas[best]);
-  // world motion
   stars.rotation.y=t*.012;stars.position.y=Math.sin(t*.2)*.3;
   warm.position.set(Math.sin(t*.3)*3,2.5,5);
-  // chip
-  const nm=names[S.T.id];el.chip.textContent=nm;el.chip.style.opacity=S.T.id==='intro'||S.T.id==='outro'?0:String(alphas[best]);
-  // title
-  if(TITLE){el.title.style.opacity=String(TITLE.a*alphas[best]);el.title.firstChild.textContent=TITLE.big;el.title.lastChild.textContent=TITLE.small;el.title.lastChild.style.opacity=String(TITLE.a2)}
-  else el.title.style.opacity='0';
-  if(HUD){el.hud.style.opacity=String(HUD.a*alphas[best]);el.hud.innerHTML=HUD.html}else el.hud.style.opacity='0';
-  // subtitle
+  renderer.render(scene,camera);
+  const A=alphas[best];
   let cur=null;
   for(const sc of TL.scenes)for(const s of sc.sentences)if(t>=s.start-.05&&t<=s.end+.3)cur=s;
-  if(cur){el.sub.textContent=cur.show;el.sub.style.opacity=String(sm(seg(t,cur.start-.05,cur.start+.2))*sm(seg(cur.end+.3,t,cur.end+.1)*0+(cur.end+.3-t)/.2))}
-  else el.sub.style.opacity='0';
-  el.bar.style.width=(100*t/TL.total)+'%';
-  renderer.render(scene,camera);
-};
-window.TOTAL=TL.total;window.READY=true;
-window.renderAt(0);
-</script></body></html>
+  return {
+    fade:1-A,
+    chip:S.T.id==='intro'||S.T.id==='outro'?null:{text:names[S.T.id],opacity:A},
+    title:TITLE?{big:TITLE.big,small:TITLE.small,a:TITLE.a*A,a2:TITLE.a2}:null,
+    hud:HUD?{html:HUD.html,opacity:HUD.a*A}:null,
+    sub:cur?{text:cur.show,opacity:sm(seg(t,cur.start-.05,cur.start+.2))*sm((cur.end+.3-t)/.2)}:null,
+    progress:t/TL.total
+  };
+}
+return {renderAt,dispose(){renderer.dispose()}};
+}
