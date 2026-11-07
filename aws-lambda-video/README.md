@@ -29,3 +29,12 @@ VOICE=pf_dora ./narration/build_audio.sh   # vozes pt-BR: pm_alex (padrão), pm_
 Isso atualiza `src/timeline.json` e o MP3; as cenas se ajustam ao novo ritmo. Para uma voz ainda mais natural, gere a narração em um serviço de TTS (ex.: ElevenLabs) e substitua `public/narration-mix.mp3` e os tempos em `src/timeline.json`.
 
 Os números citados no vídeo (15 min, 128 MB a 10 GB, cobrança por requisição e ms) foram escritos de memória: confira na documentação da AWS antes de publicar.
+
+## Short vertical (9:16, ~20 s)
+Versão curta e alegre para Shorts/Reels/TikTok: `aws-lambda-short.mp4`.
+```bash
+npm run studio                      # escolha a composição "LambdaShort"
+npx remotion render src/index.jsx LambdaShort out/aws-lambda-short.mp4
+./narration/build_short_audio.sh    # refaz voz, trilha e efeitos (VOICE=pm_alex para voz masculina)
+```
+Roteiro em `narration/short_script.json`; cenas 3D em `src/shortWorld.js`; legendas palavra por palavra em `src/LambdaShort.jsx`.

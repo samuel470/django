@@ -3,3 +3,5 @@ out/
 narration/audio/
 narration/kokoro/
 narration/timeline.json
+narration/audio_short/
+narration/timeline_short.json

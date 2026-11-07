@@ -1,0 +1,19 @@
+[
+ {"id":"hook","sentences":[
+  {"show":"Você paga servidor ligado o dia todo... pra um código que roda 5 minutos?","say":"Você paga servidor ligado o dia todo, pra um código que roda cinco minutos?"},
+  {"show":"Chega de desperdício!","say":"Chega de desperdício!"}
+ ]},
+ {"id":"wake","sentences":[
+  {"show":"Com o AWS Lambda, seu código só roda quando alguém chama!","say":"Com o ei dáblio ésse Lâmbda, seu código só roda quando alguém chama!"}
+ ]},
+ {"id":"scale","sentences":[
+  {"show":"Sem servidor pra cuidar... e escala sozinho!","say":"Sem servidor pra cuidar, e escala sozinho!"}
+ ]},
+ {"id":"cost","sentences":[
+  {"show":"E você paga só pelo tempo que usar, em milissegundos!","say":"E você paga só pelo tempo que usar, em milissegundos!"},
+  {"show":"Ninguém chamou? Custo zero!","say":"Ninguém chamou? Custo zero!"}
+ ]},
+ {"id":"outro","sentences":[
+  {"show":"E aí... ainda paga servidor parado?","say":"E aí, ainda paga servidor parado?"}
+ ]}
+]

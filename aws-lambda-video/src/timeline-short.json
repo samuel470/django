@@ -1,0 +1,75 @@
+{
+ "total": 20.232,
+ "scenes": [
+  {
+   "id": "hook",
+   "start": 0.25,
+   "end": 5.971,
+   "sentences": [
+    {
+     "show": "Você paga servidor ligado o dia todo... pra um código que roda 5 minutos?",
+     "start": 0.25,
+     "end": 4.513
+    },
+    {
+     "show": "Chega de desperdício!",
+     "start": 4.613,
+     "end": 5.971
+    }
+   ]
+  },
+  {
+   "id": "wake",
+   "start": 6.091,
+   "end": 9.766,
+   "sentences": [
+    {
+     "show": "Com o AWS Lambda, seu código só roda quando alguém chama!",
+     "start": 6.091,
+     "end": 9.766
+    }
+   ]
+  },
+  {
+   "id": "scale",
+   "start": 9.886,
+   "end": 12.33,
+   "sentences": [
+    {
+     "show": "Sem servidor pra cuidar... e escala sozinho!",
+     "start": 9.886,
+     "end": 12.33
+    }
+   ]
+  },
+  {
+   "id": "cost",
+   "start": 12.45,
+   "end": 17.034,
+   "sentences": [
+    {
+     "show": "E você paga só pelo tempo que usar, em milissegundos!",
+     "start": 12.45,
+     "end": 15.394
+    },
+    {
+     "show": "Ninguém chamou? Custo zero!",
+     "start": 15.494,
+     "end": 17.034
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "start": 17.154,
+   "end": 19.132,
+   "sentences": [
+    {
+     "show": "E aí... ainda paga servidor parado?",
+     "start": 17.154,
+     "end": 19.132
+    }
+   ]
+  }
+ ]
+}
