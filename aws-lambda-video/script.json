@@ -1,0 +1,44 @@
+[
+ {"id":"intro","sentences":[
+  {"show":"AWS Lambda.","say":"ei dáblio ésse Lâmbda."},
+  {"show":"Imagine executar o seu código na nuvem, sem criar nem manter nenhum servidor.","say":"Imagine executar o seu código na nuvem, sem criar nem manter nenhum servidor."},
+  {"show":"É exatamente isso que o Lambda faz.","say":"É exatamente isso que o Lâmbda faz."}
+ ]},
+ {"id":"what","sentences":[
+  {"show":"O Lambda é o serviço de computação serverless da AWS.","say":"O Lâmbda é o serviço de computação servêrless da ei dáblio ésse."},
+  {"show":"Em vez de manter servidores ligados o tempo todo...","say":"Em vez de manter servidores ligados o tempo todo,"},
+  {"show":"...você envia só uma função: um pedaço de código que faz uma tarefa.","say":"você envia só uma função: um pedaço de código que faz uma tarefa."},
+  {"show":"Infraestrutura, sistema e escala ficam por conta da AWS.","say":"Infraestrutura, sistema e escala ficam por conta da ei dáblio ésse."}
+ ]},
+ {"id":"events","sentences":[
+  {"show":"Tudo começa com um evento.","say":"Tudo começa com um evento."},
+  {"show":"Um upload no S3, uma requisição no API Gateway, uma mensagem no SQS...","say":"Um upload no ésse três, uma requisição no ei pi ai guêitiei, uma mensagem no ésse quiú ésse,"},
+  {"show":"...uma mudança no DynamoDB ou um agendamento.","say":"uma mudança no dainamo dê bê, ou um agendamento."},
+  {"show":"Quando o evento acontece, o Lambda chama a sua função.","say":"Quando o evento acontece, o Lâmbda chama a sua função."}
+ ]},
+ {"id":"run","sentences":[
+  {"show":"O Lambda cria um ambiente isolado, carrega o seu código e executa.","say":"O Lâmbda cria um ambiente isolado, carrega o seu código e executa."},
+  {"show":"Na primeira chamada há um pequeno atraso: o cold start.","say":"Na primeira chamada há um pequeno atraso: o côuld start."},
+  {"show":"Chegaram mil eventos juntos? Ele cria várias cópias em paralelo.","say":"Chegaram mil eventos juntos? Ele cria várias cópias em paralelo."},
+  {"show":"A escala é automática. E quando acaba o trabalho, tudo é desligado.","say":"A escala é automática. E quando acaba o trabalho, tudo é desligado."}
+ ]},
+ {"id":"cost","sentences":[
+  {"show":"E o melhor: você paga somente pelo que usar.","say":"E o melhor: você paga somente pelo que usar."},
+  {"show":"A cobrança considera as requisições e o tempo de execução, em milissegundos.","say":"A cobrança considera as requisições e o tempo de execução, em milissegundos."},
+  {"show":"Se ninguém chamar a função, você não paga nada.","say":"Se ninguém chamar a função, você não paga nada."}
+ ]},
+ {"id":"specs","sentences":[
+  {"show":"Você escolhe a linguagem: Python, Node.js, Java, Go, .NET, Ruby ou contêiner.","say":"Você escolhe a linguagem: Paiton, nôud jê ésse, Djava, Gôu, dót nét, Rubi, ou contêiner."},
+  {"show":"Cada execução pode durar até 15 minutos.","say":"Cada execução pode durar até quinze minutos."},
+  {"show":"E usar de 128 megabytes até 10 gigabytes de memória.","say":"E usar de cento e vinte e oito megabaites até dez gigabaites de memória."}
+ ]},
+ {"id":"cases","sentences":[
+  {"show":"É ótimo para APIs, processamento de imagens, automações e pipelines de dados.","say":"É ótimo para ei pi ais, processamento de imagens, automações e paiplaines de dados."},
+  {"show":"Mas processos muito longos pedem outras opções.","say":"Mas processos muito longos pedem outras opções."}
+ ]},
+ {"id":"outro","sentences":[
+  {"show":"Resumindo: menos infraestrutura, mais código.","say":"Resumindo: menos infraestrutura, mais código."},
+  {"show":"Escala automática e pagamento por uso.","say":"Escala automática e pagamento por uso."},
+  {"show":"Esse é o AWS Lambda.","say":"Esse é o ei dáblio ésse Lâmbda."}
+ ]}
+]
