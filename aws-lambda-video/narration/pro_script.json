@@ -1,0 +1,23 @@
+[
+ {"id":"intro","sentences":[
+  {"show":"Aplicações modernas não precisam de servidores ligados o tempo todo.","say":"Aplicações modernas não precisam de servidores ligados o tempo todo."}
+ ]},
+ {"id":"func","sentences":[
+  {"show":"Com o AWS Lambda, você publica apenas a sua função.","say":"Com o ei dáblio ésse Lâmbda, você publica apenas a sua função."}
+ ]},
+ {"id":"events","sentences":[
+  {"show":"Um evento dispara a execução: um upload no S3, uma requisição de API, uma mensagem em fila.","say":"Um evento dispara a execução: um upload no ésse três, uma requisição de ei pi ai, uma mensagem em fila."}
+ ]},
+ {"id":"scale","sentences":[
+  {"show":"A plataforma provisiona o ambiente, executa o código e escala automaticamente, de uma a milhares de execuções em paralelo.","say":"A plataforma provisiona o ambiente, executa o código e escala automaticamente, de uma a milhares de execuções em paralelo."}
+ ]},
+ {"id":"cost","sentences":[
+  {"show":"A cobrança é por uso, medida em milissegundos.","say":"A cobrança é por uso, medida em milissegundos."},
+  {"show":"Sem execução, sem custo de computação.","say":"Sem execução, sem custo de computação."}
+ ]},
+ {"id":"outro","sentences":[
+  {"show":"AWS Lambda.","say":"ei dáblio ésse Lâmbda."},
+  {"show":"Menos infraestrutura para gerenciar.","say":"Menos infraestrutura para gerenciar."},
+  {"show":"Mais tempo para construir.","say":"Mais tempo para construir."}
+ ]}
+]

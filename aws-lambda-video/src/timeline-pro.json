@@ -1,0 +1,92 @@
+{
+ "total": 35.959,
+ "scenes": [
+  {
+   "id": "intro",
+   "start": 0.35,
+   "end": 4.8,
+   "sentences": [
+    {
+     "show": "Aplicações modernas não precisam de servidores ligados o tempo todo.",
+     "start": 0.35,
+     "end": 4.8
+    }
+   ]
+  },
+  {
+   "id": "func",
+   "start": 5.15,
+   "end": 8.639,
+   "sentences": [
+    {
+     "show": "Com o AWS Lambda, você publica apenas a sua função.",
+     "start": 5.15,
+     "end": 8.639
+    }
+   ]
+  },
+  {
+   "id": "events",
+   "start": 8.989,
+   "end": 14.75,
+   "sentences": [
+    {
+     "show": "Um evento dispara a execução: um upload no S3, uma requisição de API, uma mensagem em fila.",
+     "start": 8.989,
+     "end": 14.75
+    }
+   ]
+  },
+  {
+   "id": "scale",
+   "start": 15.1,
+   "end": 22.707,
+   "sentences": [
+    {
+     "show": "A plataforma provisiona o ambiente, executa o código e escala automaticamente, de uma a milhares de execuções em paralelo.",
+     "start": 15.1,
+     "end": 22.707
+    }
+   ]
+  },
+  {
+   "id": "cost",
+   "start": 23.057,
+   "end": 28.397,
+   "sentences": [
+    {
+     "show": "A cobrança é por uso, medida em milissegundos.",
+     "start": 23.057,
+     "end": 25.815
+    },
+    {
+     "show": "Sem execução, sem custo de computação.",
+     "start": 26.035,
+     "end": 28.397
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "start": 28.747,
+   "end": 34.559,
+   "sentences": [
+    {
+     "show": "AWS Lambda.",
+     "start": 28.747,
+     "end": 30.129
+    },
+    {
+     "show": "Menos infraestrutura para gerenciar.",
+     "start": 30.349,
+     "end": 32.669
+    },
+    {
+     "show": "Mais tempo para construir.",
+     "start": 32.889,
+     "end": 34.559
+    }
+   ]
+  }
+ ]
+}

@@ -38,3 +38,13 @@ npx remotion render src/index.jsx LambdaShort out/aws-lambda-short.mp4
 ./narration/build_short_audio.sh    # refaz voz, trilha e efeitos (VOICE=pm_alex para voz masculina)
 ```
 Roteiro em `narration/short_script.json`; cenas 3D em `src/shortWorld.js`; legendas palavra por palavra em `src/LambdaShort.jsx`.
+
+## Vídeo profissional (9:16, ~36 s) — dark tech premium
+`aws-lambda-pro.mp4`: visual sóbrio de keynote (vidro, bloom, reflexos, diagrama de arquitetura), voz masculina calma, trilha e efeitos discretos.
+```bash
+npm run studio                                                    # composição "LambdaPro"
+npx remotion render src/index.jsx LambdaPro out/aws-lambda-pro.mp4
+./narration/build_pro_audio.sh                                    # refaz voz, trilha e efeitos
+```
+Roteiro em `narration/pro_script.json`; cenas 3D em `src/proWorld.js`; textos sobre o vídeo em `src/LambdaPro.jsx`.
+O "λ" é uma marca genérica desenhada aqui; não usa o logotipo oficial da AWS.
